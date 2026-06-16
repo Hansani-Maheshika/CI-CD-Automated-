@@ -6,13 +6,16 @@ jobs:
 
     steps:
       - name: Checkout code
-      - uses: actions/checkout
+        uses: actions/checkout
 
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
           extensions: mbstring, bcmath, pdo_mysql
+
+          name: Config env file
+          uses: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
 
 
